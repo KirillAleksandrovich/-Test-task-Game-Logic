@@ -9,3 +9,7 @@
 def isEven(value):
 
       return value % 2 == 0'''
+
+#Вариант 1: Использование оператора % (остаток от деления)
+def isEven(value):
+    return value % 2 == 0

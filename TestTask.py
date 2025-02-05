@@ -13,3 +13,7 @@ def isEven(value):
 #Вариант 1: Использование оператора % (остаток от деления)
 def isEven(value):
     return value % 2 == 0
+
+#Вариант 2: Использование побитовой операции &
+def isEven(value):
+    return (value & 1) == 0

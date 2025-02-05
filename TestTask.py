@@ -83,6 +83,9 @@ class CircularBufferList: #Реализация буфера с использо
         self.size -= 1 #Уменьшаю счетчик элементов
         return item
 
+    def __str__(self): #Возвращаю строковое представление буфера. Строка со всеми элементами буфера.
+        return str(self.buffer)
+
 
 
 

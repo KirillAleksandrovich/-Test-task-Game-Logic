@@ -53,7 +53,7 @@ def isEven(value):
 
 
 #Вариант 1: На основе списка
-class CircularBufferList: #Реализация буфера с использованием списка.
+class CircularBufferList: #Реализация буфера с использованием списка
     def __init__(self, capacity):
         self.capacity = capacity #Определяем максимальный размер буфера
         self.buffer = [None] * capacity #Создаем список заполненный None, который будет нашим буфером
@@ -62,17 +62,26 @@ class CircularBufferList: #Реализация буфера с использо
         self.tail = 0 #Индекс конца буфера
 
     def is_empty(self):
-        return self.size == 0 #Проверяю, пуст ли буфер.
+        return self.size == 0 #Проверяю, пуст ли буфер
 
     def is_full(self):
         return self.size == self.capacity #Проверяю, заполнен ли буфер
 
-    def enqueue(self, item): #Добавляю новый элемент в конец буфера.
+    def enqueue(self, item): #Добавляю новый элемент в конец буфера
         if self.is_full():
             raise Exception("Buffer is full") #Проверяю, не переполнен ли буфер
         self.buffer[self.tail] = item #Записываю элемент по текущему индексу хвоста
         self.tail = (self.tail + 1) % self.capacity #Перемещаю хвост на следующую позицию (по кругу)
         self.size += 1 #Увеличиваю счетчик элементов
+
+    def dequeue(self): #Извлекает элемент из начала буфера
+        if self.is_empty():
+            raise Exception("Buffer is empty") #Проверяю, не пуст ли буфер
+        item = self.buffer[self.head] #Читаю элемент из начала буфера
+        self.buffer[self.head] = None #Очищаю место после извлеченного элемента
+        self.head = (self.head + 1) % self.capacity #Перемещаю голову на следующую позицию (по кругу)
+        self.size -= 1 #Уменьшаю счетчик элементов
+        return item
 
 
 

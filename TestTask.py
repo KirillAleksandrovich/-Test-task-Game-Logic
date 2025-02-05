@@ -67,6 +67,13 @@ class CircularBufferList: #Реализация буфера с использо
     def is_full(self):
         return self.size == self.capacity #Проверяю, заполнен ли буфер
 
+    def enqueue(self, item): #Добавляю новый элемент в конец буфера.
+        if self.is_full():
+            raise Exception("Buffer is full") #Проверяю, не переполнен ли буфер
+        self.buffer[self.tail] = item #Записываю элемент по текущему индексу хвоста
+        self.tail = (self.tail + 1) % self.capacity #Перемещаю хвост на следующую позицию (по кругу)
+        self.size += 1 #Увеличиваю счетчик элементов
+
 
 
 

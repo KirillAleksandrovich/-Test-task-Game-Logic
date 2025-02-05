@@ -53,13 +53,21 @@ def isEven(value):
 
 
 #Вариант 1: На основе списка
-class CircularBufferList:
+class CircularBufferList: #Реализация буфера с использованием списка.
     def __init__(self, capacity):
         self.capacity = capacity #Определяем максимальный размер буфера
         self.buffer = [None] * capacity #Создаем список заполненный None, который будет нашим буфером
         self.size = 0 #Текущее количество элементов в буфере
         self.head = 0 #Индекс начала буфера
         self.tail = 0 #Индекс конца буфера
+
+    def is_empty(self):
+        return self.size == 0 #Проверяю, пуст ли буфер.
+
+    def is_full(self):
+        return self.size == self.capacity #Проверяю, заполнен ли буфер
+
+
 
 
 
